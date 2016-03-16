@@ -26,16 +26,21 @@ function solveFibonacci() {
 	outputElement.innerHTML = "Solution: " + fibonacci;
 }
 
-function solvePrimeFactor() {
-	var numberToSolve = 1000;
-	var sum = 0;
+function solvePrimeFactor() {	
 	var outputElement = document.getElementById("sol3");
-
-	for (var i = numberToSolve; i>1; i--){
-		if (i%3 === 0 || i%5 === 0){
-		// It's multiple of 3 or 5
-			sum += i;
+	factors = [];
+	var d = 2;
+	var n = 600851475143;
+	//Going to determine all of the prime factors of n.
+	while (n > 1) {
+		while (n % d == 0) {
+			factors.push(d);
+			n /= d;
 		}
+		d += 1;
 	}
-	outputElement.innerHTML = "Solution: " + sum;
+	//Print out the largest prime factor in array of factors.
+	var largest_prime_factor = Math.max.apply(Math, factors);
+	outputElement.innerHTML = "Solution: " + largest_prime_factor;
+
 }
